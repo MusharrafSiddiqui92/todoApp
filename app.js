@@ -1,4 +1,4 @@
-let add= ()=> {
+let add = ()=> {
 let taskValue= document.getElementById("task").value
 if (taskValue.trim() !== "") {
     let li = document.createElement("li");
@@ -15,7 +15,7 @@ if (taskValue.trim() !== "") {
     // document.getElementById("pendingTask").textContent = `Pending:0${pendingCount}`;
     // document.getElementById("doneTask").textContent = `Done:0${doneCount}`;
     let day = moment().format('dddd');                    // Friday
-document.querySelector("#day").innerHTML=day;
+    document.querySelector("#day").innerHTML=day;
     updatetaskCount();
 }
 }
@@ -43,12 +43,12 @@ document.querySelector("#task").addEventListener("keydown", function (event) {
   }
   window.addEventListener("DOMContentLoaded", () => {
     const dropzones = ["pending", "done"];
-dropzones.forEach(id => {
+    dropzones.forEach(id => {
     const zone = document.getElementById(id);
     zone.addEventListener("dragover", dragoverHandler);
     zone.addEventListener("drop", dropHandler);
-  });
-  });
+     });
+     });
   
   let updatetaskCount = ()=>{
     const taskTodoCount = document.querySelector("#taskTodo").querySelectorAll("li").length;
@@ -63,4 +63,4 @@ dropzones.forEach(id => {
       document.getElementById("doneTask").textContent = `Done: ${doneCount}`;
     }
     let day = moment().format('dddd');                    // Friday
-document.querySelector("day").innerHTML=day;
+    document.querySelector("day").innerHTML=day;
