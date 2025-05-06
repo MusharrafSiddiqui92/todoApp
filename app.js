@@ -6,14 +6,11 @@ if (taskValue.trim() !== "") {
     li.id= "task" + Date.now();
     li.draggable=true;
     li.addEventListener("dragstart", dragstartHandler); //Add drag event
-    document.getElementById("taskTodo").appendChild(li);
+    document.querySelector("#taskTodo ul").appendChild(li);
     document.getElementById("task").value = ""; // clear input field
-
-    let listItems = document.querySelectorAll("#taskTodo li");
+    let listItems = document.querySelectorAll("#taskTodo ul");
     let count = listItems.length;
     document.getElementById("currTask").textContent = `Task Count:0${count}`
-    // document.getElementById("pendingTask").textContent = `Pending:0${pendingCount}`;
-    // document.getElementById("doneTask").textContent = `Done:0${doneCount}`;
     let day = moment().format('dddd');                    // Friday
     document.querySelector("#day").innerHTML=day;
     updatetaskCount();
@@ -26,41 +23,42 @@ document.querySelector("#task").addEventListener("keydown", function (event) {
       add();  // Call your function
     }
   });
-
+// Enter Key End Here/
   function dragstartHandler(ev) {
     ev.dataTransfer.setData("text/plain", ev.target.id);
   }
   function dragoverHandler(ev) {
     ev.preventDefault(); // Necessary to allow a drop
   }
-
-  function dropHandler(ev) {
+function dropHandler(ev) {
     ev.preventDefault();
     const data = ev.dataTransfer.getData("text/plain");
     const draggedElement = document.getElementById(data);
-    ev.target.appendChild(draggedElement); // Move the element into dropzone
+    let dropTarget = ev.target;
+    if (dropTarget.tagName !== "UL") {
+      dropTarget = dropTarget.closest("ul");
+    }
+  
+    if (dropTarget) {
+      dropTarget.appendChild(draggedElement);
   updatetaskCount();
   }
+}
   window.addEventListener("DOMContentLoaded", () => {
-    const dropzones = ["pending", "done"];
+    const dropzones = ["taskTodo","pending", "done"];
     dropzones.forEach(id => {
-    const zone = document.getElementById(id);
-    zone.addEventListener("dragover", dragoverHandler);
-    zone.addEventListener("drop", dropHandler);
+    const ul = document.querySelector(`#${id} ul`);
+    ul.addEventListener("dragover", dragoverHandler);
+    ul.addEventListener("drop", dropHandler);
      });
      });
-  
-  let updatetaskCount = ()=>{
-    const taskTodoCount = document.querySelector("#taskTodo").querySelectorAll("li").length;
-    const pendingCount = document.querySelector("#pending").querySelectorAll("li").length;
-    const doneCount = document.querySelector("#done").querySelectorAll("li").length;
-      // let taskTodoCount = document.querySelectorAll("#taskTodo li").length;
-      // const pendingCount = document.querySelectorAll("#pending li").length;
-      // const doneCount = document.querySelectorAll("#done li").length;
-    
+     let updatetaskCount = ()=>{
+    const taskTodoCount = document.querySelector("#taskTodo ul").querySelectorAll("li").length;
+    const pendingCount = document.querySelector("#pending ul").querySelectorAll("li").length;
+    const doneCount = document.querySelector("#done ul").querySelectorAll("li").length;  
       document.getElementById("currTask").textContent = `To Do: ${taskTodoCount}`;
       document.getElementById("penTask").textContent = `Pending: ${pendingCount}`;
       document.getElementById("doneTask").textContent = `Done: ${doneCount}`;
     }
     let day = moment().format('dddd');                    // Friday
-    document.querySelector("day").innerHTML=day;
+    document.querySelector("#day").innerHTML=day;

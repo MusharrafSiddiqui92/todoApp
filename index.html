@@ -12,20 +12,23 @@
         <input type="text" name="task" id="task" placeholder="Add Task" class="border border-2 border-black rounded h-10 w-75 text-center shadow-lg shadow-gray-400 bg-[#D9D9D9]">
     <button class="border border-2 border-black w-25 rounded hover mt-2 bg-[#D9D9D9]" onclick="add()">ADD</button>
     </div>
-<div class="container max-w-none h-[75vh] flex bg-[#B3B3B3]">
-    <div class="left w-[25vw] lg:h-[75vh] h-[64vh]">
+        <div class="container max-w-none h-[75vh] flex bg-[#B3B3B3]">
+        <div class="left w-[25vw] lg:h-[75vh] h-[64vh]">
         <div id="currTask" class="grid place-items-center border border-2 lg:mt-4 mt-1 w-[15vw] h-[15vh] shadow-md shadow-black rounded-full lg:w-[8vw] lg:h-[18vh] lg:rounded-full mx-auto text-center lg:text-base text-[10px] bg-[#D4D4D4]">Task Count</div>
         <div id="penTask" class="grid place-items-center border border-2  lg:mt-4 mt-3  w-[15vw]  h-[15vh] rounded-full shadow-md shadow-black lg:w-[8vw] lg:h-[18vh] lg:rounded-full mx-auto text-center lg:text-base text-[10px] bg-[#D4D4D4]">Pending Task</div>
         <div id="doneTask" class="grid place-items-center border border-2 lg:mt-4 mt-3 w-[15vw] h-[15vh] rounded-full shadow-md shadow-black lg:w-[8vw] lg:h-[18vh] lg:rounded-full mx-auto text-center lg:text-base text-[10px] bg-[#D4D4D4]">Task Done</div>
         <div id="day" class="grid place-items-center border border-2 mt-3 w-[15vw] h-[5vh] rounded-full shadow-md shadow-black lg:w-[8vw] lg:h-[8vh] lg:rounded-full mx-auto text-center lg:text-base text-[10px] bg-[#D4D4D4]"></div>
     </div>
     <div class="right w-[75vw] h-[75vh] flex justify-evenly items-center">
-        <div id="taskTodo" class=" rounded-lg w-[20vw]  h-[63vh] ml-1 shadow-lg shadow-black text-center bg-[#D9D9D9]"><h1>Task TO DO</h1></div>
-        <div id="pending" class="rounded-lg w-[20vw]  h-[63vh] ml-2 shadow-lg shadow-black text-center bg-[#D9D9D9]"><h1>Pending</h1></div>
-        <div id="done" class=" rounded-lg w-[20vw] h-[63vh] ml-2 shadow-lg shadow-black text-center bg-[#D9D9D9]">Done</div>
+        <div id="taskTodo" class=" rounded-lg w-[20vw] h-[63vh] shadow-lg shadow-black text-center bg-[#D9D9D9]"><h1>Task TO DO</h1>  <ul class="min-h-[300px] p-2 space-y-2"></ul>
+        </div>
+        <div id="pending" class="rounded-lg w-[20vw]  h-[63vh] ml-2 shadow-lg shadow-black text-center bg-[#D9D9D9]"><h1>Pending</h1>  <ul class="min-h-[300px] p-2 space-y-2"></ul>
+        </div>
+        <div id="done" class=" rounded-lg w-[20vw] h-[63vh] ml-2 shadow-lg shadow-black text-center bg-[#D9D9D9]">Done   <ul class="min-h-[300px] p-2 space-y-2"></ul>
+        </div>
     </div>
 </div>
-<div class="container max-w-none h-[10vh] shadow-md bg-[#2B2B2B] text-center text-white"><p>&copy All rights reserved. Powered by MB Enterprises.</p></div>
+<div class="container max-w-none h-[10vh] shadow-md bg-[#2B2B2B] text-center text-white pt-3"><p>&copy All rights reserved. Powered by MB Enterprises.</p></div>
 <script src="app.js"></script>
 </body>
 </html>
